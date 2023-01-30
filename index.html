@@ -1,0 +1,123 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+
+<style>
+.card-on-hover:hover{
+    border:1px solid green;
+}
+
+.padding-beetween{
+    padding: 20px;
+} 
+
+.margin-description{
+    margin-left: 20px;
+}
+
+.margin-description > p {
+    margin-bottom: 0px;
+}
+
+.margin-description > p:last-child {
+    margin-top: 10px;
+    color: green;
+    cursor: pointer;
+}
+
+.chevron{
+    font-size: xx-large;
+    position: absolute;
+    top: 0;
+    margin-top: 25px;
+    cursor: pointer;
+}
+
+.hidden-description{
+    display: none;
+}
+.chevron-off{
+    display: none;
+}
+</style>
+
+<body>
+
+
+<div class="row align-items-start padding-beetween">
+    <div class="col card-on-hover padding-beetween">
+        <div class="row">
+        <div class="col-3">
+            <img style="height:100px" src="https://mdbootstrap.com/img/Photos/Others/img%20(30).jpg"/>
+        </div>
+        <div class="col margin-description">
+            <p class="card-text">Sports & Entertainment</p>
+            <p class="card-text">Yanga Bathandwa Mzolo</p>
+            <p class="card-text">Smoothie Truck</p>
+            <p class="card-text" onclick="showDescription(0)">Click here to expand row</p>
+        </div>
+        <div class="col-1" onclick="showDescription(0)">
+            <span class="chevron chevron-on">></span>
+            <span class="chevron chevron-off"><</span>
+        </div>
+        </div>
+        <div class="row hidden-description">
+                <p class="card-text">Here is the description...</p>
+        </div>
+    </div>
+
+    <div class="col card-on-hover padding-beetween">
+        <div class="row">
+        <div class="col-3">
+            <img style="height:100px" src="https://mdbootstrap.com/img/Photos/Others/img%20(30).jpg"/>
+        </div>
+        <div class="col margin-description">
+            <p class="card-text">Sports & Entertainment</p>
+            <p class="card-text">Yanga Bathandwa Mzolo</p>
+            <p class="card-text">Smoothie Truck</p>
+            <p class="card-text" onclick="showDescription(1)">Click here to expand row</p>
+        </div>
+        <div class="col-1" onclick="showDescription(1)">
+            <span class="chevron chevron-on">></span>
+            <span class="chevron chevron-off"><</span>
+        </div>
+        </div>
+        <div class="row hidden-description">
+            <p class="card-text">Here is the description...</p>
+    </div>
+    </div>
+</div>
+
+
+<script>
+function showDescription(index) {
+    const clickedElements = document.querySelectorAll(".hidden-description");
+    const currentState = window.getComputedStyle(clickedElements[index], null).getPropertyValue('display');
+
+
+    clickedElements.forEach(element => {
+        element.style.display = 'none';
+    });
+    var chevronElements = document.querySelectorAll(".chevron-off");
+    chevronElements.forEach(element => {
+        element.style.display = 'none';
+    });
+    var chevronElements = document.querySelectorAll(".chevron-on");
+    chevronElements.forEach(element => {
+        element.style.display = 'block';
+    });
+
+    if (currentState === 'none') {
+        console.log(true);
+        clickedElements[index].style.display = 'block';
+        document.querySelectorAll(".chevron-on")[index].style.display = 'none';
+        document.querySelectorAll(".chevron-off")[index].style.display = 'block';
+    }
+}
+</script>
+
+</body>
